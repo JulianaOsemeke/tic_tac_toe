@@ -1,6 +1,6 @@
 require_relative '../lib/board'
 
-RSpec.describe Board do 
+RSpec.describe Board do
   let(:board) { Board.new }
 
   context 'correctly validates inputs:' do
