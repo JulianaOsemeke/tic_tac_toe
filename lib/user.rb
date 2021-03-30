@@ -4,9 +4,10 @@ class User
 
   attr_writer :marker
 
-  def initialize(name)
+  def initialize(name, marker = 'X')
     name += "\'s" if name[-1] != 's' && !name.empty?
     @name = name
+    @marker = marker
   end
 
   def mark

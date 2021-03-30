@@ -6,7 +6,7 @@ class Board < Game
   end
 
   def valid(num)
-    num.between?(1, 9) && @cells[num - 1].class != String
+    num.is_a?(Integer) && num.between?(1, 9) && @cells[num - 1].class != String
   end
 
   def update(num, mark)
