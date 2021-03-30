@@ -47,4 +47,20 @@ RSpec.describe Board do
       expect(board.display).to eq expected
     end
   end
+
+  context 'verify if board is full' do
+    it 'verfies an empty board' do
+      expect(board.full).to be false
+    end
+    it 'verifies a partially full board' do
+      board.update(2,'X')
+      expect(board.full).to be false
+    end
+    it 'verifies a completely full board' do
+      (1..9).each{|i| board.update(i,'X')}
+      expect(board.full).to be true
+    end
+  end
+
+  
 end
