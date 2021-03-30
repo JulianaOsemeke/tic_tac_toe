@@ -4,23 +4,23 @@ RSpec.describe Board do
   let(:board) { Board.new }
 
   context 'correctly validates inputs:' do
-    xit 'is invalid input nil' do
+    it 'is invalid input nil' do
       expect(board.valid(nil)).to be false
     end
 
-    xit 'is invalid input number less than 1' do
+    it 'is invalid input number less than 1' do
       expect(board.valid(0)).to be false
     end
 
-    xit 'is invalid input number greater than 9' do
+    it 'is invalid input number greater than 9' do
       expect(board.valid(10)).to be false
     end
 
-    xit 'is invalid input string' do
+    it 'is invalid input string' do
       expect(board.valid('1')).to be false
     end
 
-    xit 'is valid input' do
+    it 'is valid input' do
       expect(board.valid(1)).to be true
     end
   end
@@ -63,21 +63,20 @@ RSpec.describe Board do
   end
 
    context 'correctly verifies winner' do
-    let(:b){Board.new}
     it 'verifies an empty board' do
-      expect(b.verify).to be false
+      expect(board.verify).to be false
     end
     it 'verifies a winner horizontally' do
-    [1,2,3].each{|i| b.update(i,'X')}
-      expect(b.full).to be true
+    [1,2,3].each{|i| board.update(i,'X')}
+      expect(board.verify).to be true
     end
     it 'verifies a winner vertically' do
-      [1,4,7].each{|i| b.update(i,'X')}
-        expect(b.full).to be true
+      [1,4,7].each{|i| board.update(i,'X')}
+        expect(board.verify).to be true
       end
     it 'verifies a winner diagonally' do
-     [1,5,9].each{|i| b.update(i,'X')}
-       expect(b.full).to be true
+     [1,5,9].each{|i| board.update(i,'X')}
+       expect(board.verify).to be true
       end
   end
 end
