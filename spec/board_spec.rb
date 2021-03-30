@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require_relative '../lib/board'
 
-RSpec.describe Board do
+RSpec.describe Board do # rubocop:disable Metrics/BlockLength
   let(:board) { Board.new }
 
   context 'correctly validates inputs:' do
@@ -53,30 +55,30 @@ RSpec.describe Board do
       expect(board.full).to be false
     end
     it 'verifies a partially full board' do
-      board.update(2,'X')
+      board.update(2, 'X')
       expect(board.full).to be false
     end
     it 'verifies a completely full board' do
-      (1..9).each{|i| board.update(i,'X')}
+      (1..9).each { |i| board.update(i, 'X') }
       expect(board.full).to be true
     end
   end
 
-   context 'correctly verifies winner' do
+  context 'correctly verifies winner' do
     it 'verifies an empty board' do
       expect(board.verify).to be false
     end
     it 'verifies a winner horizontally' do
-    [1,2,3].each{|i| board.update(i,'X')}
+      [1, 2, 3].each { |i| board.update(i, 'X') }
       expect(board.verify).to be true
     end
     it 'verifies a winner vertically' do
-      [1,4,7].each{|i| board.update(i,'X')}
-        expect(board.verify).to be true
-      end
+      [1, 4, 7].each { |i| board.update(i, 'X') }
+      expect(board.verify).to be true
+    end
     it 'verifies a winner diagonally' do
-     [1,5,9].each{|i| board.update(i,'X')}
-       expect(board.verify).to be true
-      end
+      [1, 5, 9].each { |i| board.update(i, 'X') }
+      expect(board.verify).to be true
+    end
   end
 end

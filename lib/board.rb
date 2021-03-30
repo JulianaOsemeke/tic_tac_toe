@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'logic'
 # Board class to create a board
 class Board < Game
