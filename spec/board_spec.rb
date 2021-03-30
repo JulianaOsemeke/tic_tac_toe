@@ -62,5 +62,22 @@ RSpec.describe Board do
     end
   end
 
-  
+   context 'correctly verifies winner' do
+    let(:b){Board.new}
+    it 'verifies an empty board' do
+      expect(b.verify).to be false
+    end
+    it 'verifies a winner horizontally' do
+    [1,2,3].each{|i| b.update(i,'X')}
+      expect(b.full).to be true
+    end
+    it 'verifies a winner vertically' do
+      [1,4,7].each{|i| b.update(i,'X')}
+        expect(b.full).to be true
+      end
+    it 'verifies a winner diagonally' do
+     [1,5,9].each{|i| b.update(i,'X')}
+       expect(b.full).to be true
+      end
+  end
 end
